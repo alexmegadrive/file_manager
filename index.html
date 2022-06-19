@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ИнфТех тестовое задание</title>
+
+</head>
+
+<body>
+    <div id="root">
+        <div class="main_container">
+            <header class="header">
+                <div class="header__wrapper">
+                    <div class="header__left-content-wrapper">
+                      
+                        <div class="header__link-wrapper">
+                   
+                            <div class="header__icon-settings_save"></div>
+                            <a class="header__link" href="#" onclick="saveFile()" id="saveFile" >Сохранить файл</a>
+                            <div class="header__icon-settings_download"></div>
+                            <a class="header__link" href="#" onclick="downloadFile()">Скачать файл</a>
+                            <div class="header__icon-settings_edit"></div>
+                            <a class="header__link" href="#" onclick="changeElementName()">Переименовать</a>
+                            <div class="header__icon-settings_delete"></div>
+                            <a class="header__link"  href="#" onclick="removeElement()">Удалить</a>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </header>
+            <div class="chat__window_container_main">
+                <div class="chat__container_list" ">
+                    <div class="ChatMainList_Container">
+                        <div>
+                            <div class="ChatMainList_Title">
+                                <div onclick="clearActiveElement()">СПИСОК ФАЙЛОВ И ПАПОК</div>
+                            </div>
+                            <div class="ChatMainList_Group">
+                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainList_clear" onclick="clearActiveElement()"></div>
+
+                    <div>
+                     
+                            <form class="addChat_form">
+                                <input placeholder="Введите название" class="addChat_input" id="addForm_newName"  value="">
+                                <button class="addForm__button_file"  onclick="addFile(document.getElementById('addForm_newName').value)">
+                                <p class="addForm__button_text">Новый файл</p>
+                            </button>
+                            <button class="addForm__button_folder" onclick="addFolder(document.getElementById('addForm_newName').value)">
+                                <p class="addForm__button_text">Новая папка</p>
+                            </button>
+                        </form>
+                    </div>
+                    
+                </div>
+
+
+                <div class="main__file_content">
+                    <div id="main__editor_window">
+                       <div id="editor__elem_block">Выберите элемент</div>
+                    </div>
+ 
+                    <div id="editor__textarea_wrapper"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"  type="module"  defer></script>
+</body>
+
+</html>
