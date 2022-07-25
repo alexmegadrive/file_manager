@@ -1,9 +1,8 @@
-/*! CSS Used from: Embedded */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     margin: 0;
-    /* padding: 0; */
-    font-family: Montserrat, sans-serif;
-    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 button {
@@ -11,7 +10,6 @@ button {
     border: none;
 }
 
-/*! CSS Used from: Embedded */
 .header {
     background: linear-gradient(90.01deg, #2A8BF2 0.01%, #0A6CD6 99.99%);
     height: 70px;
@@ -83,7 +81,12 @@ button {
     color:rgb(168, 195, 240);
 }
 
-
+.header__icon-settings_gear {
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+    background: no-repeat center/24px url(http://localhost:3000/static/media/icon6.503c0bd07535bc5620cb.svg);
+}
 
 .header__link,
 .header__button-exit-text {
@@ -117,6 +120,11 @@ button {
     padding: 17px 68px;
 }
 
+.header__button-exit-icon {
+    width: 25px;
+    height: 25px;
+    background: no-repeat center/25px url(http://localhost:3000/static/media/icon7.af5f108251f8ad463f41.svg);
+}
 
 /*! CSS Used from: Embedded */
 .main__file_content {
@@ -199,21 +207,6 @@ button {
 
 
 
-
-/* ul::before {
-    background-image:url('images/folder_icon.svg') ;
-    display: inline-block;
-    width: 15px; 
-    height: 15px;
-    content:"";
-    margin-right: 5px;
-} */
-
-
-
-
-
-
 ul li {
     list-style-type: none;
     position: relative;
@@ -290,7 +283,6 @@ ul li.open > a:not(:last-child):after {
 overflow: auto;
 }
 
-/*! CSS Used from: Embedded */
 .send {
     background: #D4D6F0;
     border-radius: 15px;
@@ -314,7 +306,12 @@ overflow: auto;
     position: relative;
 }
 
-
+.send__button-icon {
+    margin-right: 15px;
+    width: 22px;
+    height: 22px;
+    background: no-repeat center/22px url(http://localhost:3000/static/media/icon8.63eacfeb7d8d0e6e2e29.svg);
+}
 
 .send__button {
     position: absolute;
@@ -339,7 +336,6 @@ overflow: auto;
 }
 
 
-/*! CSS Used from: Embedded */
 .empty_chat_block {
     background: url(http://localhost:3000/static/media/hello.9dca54da51a7ff25930d.png) no-repeat center;
     width: 100%;
@@ -455,33 +451,3 @@ overflow: auto;
 }
 
 
-
-/*! CSS Used keyframes */
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-/*! CSS Used fontfaces */
-@font-face {
-    src: url(http://localhost:3000/static/media/Montserrat-Regular.8b56391ed36ea95337c6.woff2) format('woff2');
-    font-family: 'Montserrat';
-    font-weight: 400;
-}
-
-@font-face {
-    src: url(http://localhost:3000/static/media/Montserrat-Medium.d6bbb7c3c86aa8edcd0a.woff2) format('woff2');
-    font-family: 'Montserrat';
-    font-weight: 500;
-}
-
-@font-face {
-    src: url(http://localhost:3000/static/media/Montserrat-Bold.cfceaf4e74789fc9df24.woff2) format('woff2');
-    font-family: 'Montserrat';
-    font-weight: 700;
-}

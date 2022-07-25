@@ -1,102 +1,18 @@
 //хранилище файлов
-const treeObject = [
+// import {treeObject} from './tree.js'
 
-    {
-        id: 1,
-        parent: 0,
-        name: 'File2.txt',
-        isFolder: false,
-        content: "let treeObjRef = document.querySelector('.ChatMainList_Group') \nlet newElement = document.createElement(div);",
-        description: "test desc File2 файл 2 описание",
-        isActive: false
-    },
-    {
-        id: 7,
-        parent: 0,
-        name: 'File3.doc',
-        isFolder: false,
-        content: "File3 : 333 333 333\nlet newElement = document.createElement(div);\n <div class=header__icon-settings_delete></div>",
-        description: "test desc file 3333 рабочие материалы",
-        isActive: false
-    },
-    {
-        id: 2,
-        parent: 0,
-        name: 'folder2_дочерние файлы',
-        description: "это папка folder#2",
-        isFolder: true,
-        isActive: false,
-        isFolderExpanded: false
-
-    },
-    {
-        id: 3,
-        parent: 0,
-        name: 'folder5',
-        description: "это папка Folder#5",
-        isFolder: true,
-        children: [],
-        isActive: false,
-        isFolderExpanded: false
-    },
-    {
-        id: 4,
-        parent: 2,
-        name: 'TestFile',
-        description: "test desc",
-        isFolder: false,
-        content: "1111111111",
-        isActive: false
-    },
-    {
-        id: 5,
-        parent: 2,
-        name: 'TestFile2',
-        description: "test desc",
-        isFolder: false,
-        content: "2222222222222",
-        isActive: false
-    },
-    {
-        id: 6,
-        parent: 2,
-        name: 'TestFile3',
-        description: "test desc",
-        isFolder: false,
-        content: "33333333",
-        isActive: false
-    },
-    {
-        id: 101,
-        parent: 2,
-        name: 'folder6_inner',
-        description: "это папка Folder#6 inner",
-        isFolder: true,
-        children: [],
-        isActive: false,
-        isFolderExpanded: false
-    },
-    {
-        id: 102,
-        parent: 101,
-        name: 'TestFile Folder 6 inner',
-        description: "test desc",
-        isFolder: false,
-        content: "",
-        isActive: false
-    },
-];
-
+// console.log(treeObject)
 
 //счетчик для присваивания id новым элементам
-let id_counter = 1000;
+var id_counter = 1000;
 
 //переменная для хранения id открытого файла
-let openedItemId = 0;
+var openedItemId = 0;
 
 
 //функция развертывания массива в дерево с <UL></UL> <LI></LI>
-const treeOpenFunc = () => {
+
+window.treeOpenFunc = function(event){
     var tree = document.querySelectorAll('ul a:not(:last-child)');
     for(var i = 0; i < tree.length; i++){
         tree[i].addEventListener('click', function(e) {
@@ -113,15 +29,15 @@ const treeOpenFunc = () => {
             }
             e.preventDefault();
         });
-    }
-}
+    }}
+
 
 
 //рендер и заполнение левой панели папками и файлами
     //создание элемента и развертывание в DOM
 
-const treeMapElementsCreate = () => {
-document.querySelector('.ChatMainList_Group').innerHTML = "";
+    window.treeMapElementsCreate = function(event){
+        document.querySelector('.ChatMainList_Group').innerHTML = "";
     let treeObjRef = document.querySelector('.ChatMainList_Group')
     function getTree(array, level) {
         var ul = document.createElement('ul');
@@ -197,10 +113,6 @@ document.querySelector('.ChatMainList_Group').innerHTML = "";
                 updateActiveElement(); // перерендер левой панели с учетом классов активного элемента
                 uploadFileToEditor(); //навешивание на кнопку загрузки ТХТ файла в редактор обработчика события
                 
-
-
-
-
             });
 
              }
@@ -214,7 +126,8 @@ document.querySelector('.ChatMainList_Group').innerHTML = "";
     }
     
     let data = treeObject   ;
-    tree = function (data, root) {
+    window.tree = function (data, root) {
+        
             var r = [],
                 o = {};
     
@@ -239,7 +152,7 @@ document.querySelector('.ChatMainList_Group').innerHTML = "";
 
 //вызов функции раскрывания
 treeOpenFunc();
-}
+    }
 
 
 //ставим метку и класс на активный элемент, убираем с остальных
@@ -277,7 +190,7 @@ const removeElement = () => {
 
 
 //сброс активного элемента при клике на свободное место
-const clearActiveElement = () => {
+window.clearActiveElement = function() {
     for (let i = 0; i < treeObject.length; i++) {     
         treeObject[i].isActive = false;
     }
@@ -289,9 +202,9 @@ const clearActiveElement = () => {
     updateActiveElement();
 }
 
-
 //создание файла
-const addFile = (newFileName) => {
+
+window.addFile = function(newFileName){
     event.preventDefault();
     const target = treeObject.findIndex((element) => element.id == openedItemId);
     if (!!newFileName && ((openedItemId == 0) || (treeObject[target].isFolder == true))) {
@@ -310,11 +223,11 @@ const addFile = (newFileName) => {
         console.log(treeObject)
         treeMapElementsCreate();
         id_counter++;
-    } 
-}
+    } }
+
 
 //создание папки
-const addFolder = (newFolderName) => {
+window.addFolder = function(newFolderName) {
     event.preventDefault();
     const target = treeObject.findIndex((element) => element.id == openedItemId);
     if (!!newFolderName && ((openedItemId == 0) || (treeObject[target].isFolder == true))) {
